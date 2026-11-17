@@ -12,6 +12,140 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+        <style>
+        /* Company Profile Navbar Button */
+        .btn-nav-profile {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.22);
+            padding: 9px 18px;
+            border-radius: 9999px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+        .btn-nav-profile:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.5);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Company Profile Modal */
+        #profileModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 13, 26, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #profileModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .profile-modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 820px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes popIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .profile-modal-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .profile-modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0b1a30;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .profile-modal-title i {
+            color: #e31b23;
+            font-size: 1.1rem;
+        }
+        .profile-modal-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .profile-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+        .profile-action-btn.print {
+            background: linear-gradient(135deg, #e31b23, #c4141b);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(227,27,35,0.35);
+        }
+        .profile-action-btn.print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227,27,35,0.5);
+        }
+        .profile-action-btn.close-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 1.3rem;
+            padding: 6px 12px;
+        }
+        .profile-action-btn.close-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .profile-modal-body {
+            padding: 20px 24px 24px;
+        }
+        .profile-modal-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        @media (max-width: 640px) {
+            .btn-nav-profile { display: none; }
+        }
+        </style>
+
 </head>
 <body>
 
@@ -52,6 +186,9 @@
                 <button class="search-btn" id="searchToggle" title="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
+                <a href="#" class="btn btn-nav-profile" id="openProfileBtn" title="View Company Profile &amp; Brochure">
+                    <i class="fa-solid fa-id-card"></i> Company Profile
+                </a>
                 <a href="#quoteModal" class="btn btn-primary btn-quote" id="openQuoteBtn">
                     Get a Quote <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
@@ -534,7 +671,58 @@
         </div>
     </div>
 
+
+    <!-- ================= COMPANY PROFILE MODAL ================= -->
+    <div id="profileModal">
+        <div class="profile-modal-box">
+            <div class="profile-modal-top">
+                <div class="profile-modal-title">
+                    <i class="fa-solid fa-id-card"></i>
+                    THM Fluid Technik &mdash; Official Company Profile
+                </div>
+                <div class="profile-modal-actions">
+                    <button class="profile-action-btn print" onclick="window.print()" title="Print or Save as PDF">
+                        <i class="fa-solid fa-print"></i> Print / Save as PDF
+                    </button>
+                    <button class="profile-action-btn close-btn" id="closeProfileModal" title="Close">&times;</button>
+                </div>
+            </div>
+            <div class="profile-modal-body">
+                <img src="assets/logos/thm-company-profile.jpg" alt="THM Fluid Technik Pvt. Ltd. - Official Company Profile & Brochure">
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
+
+    <script>
+    (function() {
+        var modal = document.getElementById('profileModal');
+        var openBtn = document.getElementById('openProfileBtn');
+        var closeBtn = document.getElementById('closeProfileModal');
+        if (openBtn) {
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    })();
+    </script>
+
 </body>
 </html>
