@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THM Fluid Technik Pvt Ltd - Corporate Profile & Brochure Template</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --thm-red: #e31b23;
+            --thm-dark: #0f1c30;
+            --thm-slate: #6b819c;
+            --thm-slate-dark: #586d87;
+            --thm-bg-light: #f7f9fa;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b1526;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px 50px;
+        }
+
+        /* Top Action Bar */
+        .action-bar {
+            width: 100%;
+            max-width: 1050px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .action-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 9999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e31b23 0%, #c4141b 100%);
+            border-color: #e31b23;
+        }
+
+        .btn-primary:hover {
+            background: #f0252d;
+            box-shadow: 0 4px 15px rgba(227, 27, 35, 0.4);
+        }
+
+        /* ================= BROCHURE CANVAS ================= */
+        .brochure-sheet {
+            width: 100%;
+            max-width: 1024px;
+            aspect-ratio: 1024 / 728;
+            background-color: #ffffff;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Geometric Angles in Background */
+        .bg-facet-1 {
+            position: absolute;
+            top: 0;
+            left: 7%;
+            width: 12%;
+            height: 100%;
+            background: #eef2f5;
+            transform: skewX(-14deg);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-facet-2 {
+            position: absolute;
+            top: 0;
+            right: 14%;
+            width: 15%;
+            height: 100%;
+            background: #eef2f5;
+            transform: skewX(-14deg);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-facet-3 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2%;
+            height: 100%;
+            background: #eef2f5;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* --- Header of Sheet --- */
+        .sheet-header {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 30px 45px 10px;
+            gap: 28px;
+        }
+
+        .tagline-box {
+            text-align: right;
+            padding-top: 10px;
+        }
+
+        .tagline-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.28rem;
+            font-weight: 800;
+            font-style: italic;
+            color: #0b1c36;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+        }
+
+        .header-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-emblem-svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-thm-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: #0b224a;
+            line-height: 1;
+            margin-top: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-fluid-technik {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            color: #0b224a;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Center Slate Blue Banner --- */
+        .sheet-center-banner {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 38%;
+            background: linear-gradient(90deg, #6e84a0 0%, #687e99 100%);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin: auto 0;
+        }
+
+        /* Dotted World Map */
+        .world-map-wrap {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 440px;
+            height: 220px;
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        .world-map-wrap svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Rounded Frame for Power Pack / Machinery */
+        .machinery-frame {
+            position: absolute;
+            right: 42px;
+            top: 50%;
+            transform: translateY(-46%);
+            width: 400px;
+            height: 260px;
+            background: #ffffff;
+            border-radius: 46px 16px 16px 16px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.28);
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        .machinery-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sub-caption below the machinery frame */
+        .solutions-caption-box {
+            position: absolute;
+            right: 42px;
+            top: calc(50% + 140px);
+            width: 400px;
+            text-align: center;
+            z-index: 25;
+        }
+
+        .solutions-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 900;
+            font-style: italic;
+            color: #0c1a2e;
+            letter-spacing: 0.3px;
+            margin-bottom: 3px;
+        }
+
+        .solutions-subline {
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-style: italic;
+            color: #475569;
+            letter-spacing: 0.2px;
+        }
+
+        /* --- Sheet Footer --- */
+        .sheet-footer {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 45px 35px;
+        }
+
+        .company-info-block {
+            max-width: 440px;
+        }
+
+        .footer-logo-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .footer-logo-emblem {
+            width: 38px;
+            height: 38px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #0b224a;
+            line-height: 1;
+        }
+
+        .footer-logo-sub {
+            font-size: 0.52rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            color: #0b224a;
+            text-transform: uppercase;
+        }
+
+        .company-legal-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 900;
+            color: #0b1a30;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
+        }
+
+        .company-details-list {
+            font-size: 0.74rem;
+            line-height: 1.5;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .company-details-list span.label {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .company-details-list a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .company-details-list a:hover {
+            color: var(--thm-red);
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .action-bar {
+                display: none;
+            }
+            .brochure-sheet {
+                box-shadow: none;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .brochure-sheet {
+                aspect-ratio: auto;
+                min-height: 600px;
+                padding-bottom: 30px;
+            }
+            .sheet-center-banner {
+                height: 220px;
+            }
+            .machinery-frame {
+                width: 280px;
+                height: 180px;
+            }
+            .solutions-caption-box {
+                top: calc(50% + 100px);
+                width: 280px;
+            }
+            .tagline-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Action Navigation -->
+    <div class="action-bar">
+        <div class="action-left">
+            <a href="index.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Back to Main Website</a>
+            <span style="font-weight: 700; font-size: 0.92rem; color: #94a3b8;">Client Profile & Brochure Template</span>
+        </div>
+        <div class="action-right">
+            <button onclick="window.print()" class="btn-nav btn-primary" title="Print or save as PDF">
+                <i class="fa-solid fa-print"></i> Print / Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- The Exact Corporate Brochure Sheet -->
+    <div class="brochure-sheet" id="brochurePrintArea">
+        <!-- Angled Facets -->
+        <div class="bg-facet-1"></div>
+        <div class="bg-facet-2"></div>
+        <div class="bg-facet-3"></div>
+
+        <!-- Sheet Header: Tagline & Top Right Logo -->
+        <header class="sheet-header">
+            <div class="tagline-box">
+                <div class="tagline-text">
+                    Engineering Beyond<br>
+                    What's Possible
+                </div>
+            </div>
+
+            <div class="header-logo-box">
+                <!-- SVG Red Hydraulic Emblem with 4-Way Cross Arrows -->
+                <svg class="logo-emblem-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#E31B23"/>
+                    <rect x="35" y="35" width="30" height="30" rx="3" fill="#ffffff"/>
+                    <!-- 4 Outward Arrows -->
+                    <path d="M50 20 L42 28 H47 V35 H53 V28 H58 Z" fill="#ffffff"/>
+                    <path d="M50 80 L42 72 H47 V65 H53 V72 H58 Z" fill="#ffffff"/>
+                    <path d="M20 50 L28 42 V47 H35 V53 H28 V58 Z" fill="#ffffff"/>
+                    <path d="M80 50 L72 42 V47 H65 V53 H72 V58 Z" fill="#ffffff"/>
+                </svg>
+                <div class="logo-thm-title">THM</div>
+                <div class="logo-fluid-technik">FLUID TECHNIK</div>
+            </div>
+        </header>
+
+        <!-- Center Slate Blue Banner with Dotted World Map & High-Pressure Machinery -->
+        <div class="sheet-center-banner">
+            <!-- Halftone Dotted World Map SVG -->
+            <div class="world-map-wrap">
+                <svg viewBox="0 0 1000 500" fill="rgba(255,255,255,0.7)" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.85">
+                        <!-- Americas -->
+                        <circle cx="180" cy="140" r="3"/><circle cx="200" cy="130" r="3"/><circle cx="220" cy="140" r="3"/><circle cx="240" cy="150" r="3"/><circle cx="260" cy="160" r="3"/>
+                        <circle cx="200" cy="160" r="3"/><circle cx="220" cy="170" r="3"/><circle cx="240" cy="180" r="3"/><circle cx="250" cy="200" r="3"/><circle cx="230" cy="210" r="3"/>
+                        <circle cx="280" cy="260" r="3"/><circle cx="290" cy="280" r="3"/><circle cx="310" cy="300" r="3"/><circle cx="320" cy="330" r="3"/><circle cx="300" cy="360" r="3"/>
+                        <!-- Europe & Africa -->
+                        <circle cx="490" cy="140" r="3"/><circle cx="510" cy="150" r="3"/><circle cx="530" cy="140" r="3"/><circle cx="500" cy="170" r="3"/><circle cx="520" cy="180" r="3"/>
+                        <circle cx="490" cy="220" r="3"/><circle cx="510" cy="240" r="3"/><circle cx="530" cy="260" r="3"/><circle cx="520" cy="290" r="3"/><circle cx="540" cy="320" r="3"/>
+                        <circle cx="550" cy="350" r="3"/><circle cx="560" cy="380" r="3"/>
+                        <!-- Asia & India -->
+                        <circle cx="620" cy="160" r="3"/><circle cx="650" cy="170" r="3"/><circle cx="680" cy="160" r="3"/><circle cx="710" cy="170" r="3"/><circle cx="740" cy="180" r="3"/>
+                        <circle cx="640" cy="210" r="3"/><circle cx="670" cy="230" r="3.5" fill="#ffffff"/><circle cx="680" cy="250" r="3.5" fill="#ffffff"/><circle cx="690" cy="270" r="3.5" fill="#ffffff"/>
+                        <!-- Australia -->
+                        <circle cx="810" cy="340" r="3"/><circle cx="840" cy="350" r="3"/><circle cx="830" cy="380" r="3"/><circle cx="860" cy="370" r="3"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Framed Machinery (Power Pack, Manifold & Solenoids) -->
+            <div class="machinery-frame">
+                <img src="assets/images/brochure-powerpack.jpg" alt="THM Fluid Technik Hydraulic Power Pack & Valves">
+            </div>
+
+            <!-- Hydraulic Solutions Sub-caption -->
+            <div class="solutions-caption-box">
+                <div class="solutions-heading">HYDRAULIC SOLUTIONS</div>
+                <div class="solutions-subline">Pumps &bull; Valves &bull; Controls &bull; Manifolds</div>
+            </div>
+        </div>
+
+        <!-- Sheet Footer: Company Name, Belgaum Address, Phones, Email & Web -->
+        <footer class="sheet-footer">
+            <div class="company-info-block">
+                <div class="footer-logo-row">
+                    <svg class="footer-logo-emblem" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#E31B23"/>
+                        <rect x="35" y="35" width="30" height="30" rx="3" fill="#ffffff"/>
+                        <path d="M50 20 L42 28 H47 V35 H53 V28 H58 Z" fill="#ffffff"/>
+                        <path d="M50 80 L42 72 H47 V65 H53 V72 H58 Z" fill="#ffffff"/>
+                        <path d="M20 50 L28 42 V47 H35 V53 H28 V58 Z" fill="#ffffff"/>
+                        <path d="M80 50 L72 42 V47 H65 V53 H72 V58 Z" fill="#ffffff"/>
+                    </svg>
+                    <div>
+                        <div class="footer-logo-text">THM</div>
+                        <div class="footer-logo-sub">FLUID TECHNIK</div>
+                    </div>
+                </div>
+
+                <div class="company-legal-name">THM FLUID TECHNIK PVT LTD.</div>
+
+                <div class="company-details-list">
+                    <div><span class="label">ADDRESS:</span> Plot No.30A, RS No.703/1, Near GIT Collage Back Gate, Udyambag, Belgaum - 590008</div>
+                    <div><span class="label">M:</span> +91-9449065095; +91 8872241800</div>
+                    <div><span class="label">E-mail:</span> <a href="mailto:thmfluidtechnik@gmail.com">thmfluidtechnik@gmail.com</a></div>
+                    <div><span class="label">Website:</span> <a href="http://www.thmfluidtechnik.com" target="_blank">www.thmfluidtechnik.com</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
