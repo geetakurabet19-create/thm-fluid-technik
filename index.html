@@ -177,7 +177,7 @@
                 <li class="nav-item"><a href="#industries" class="nav-link">Industries</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" id="openProfileBtnMobile" style="color:#f87171;font-weight:700;"><i class="fa-solid fa-id-card"></i> Company Profile</a></li>
+                
             </ul>
 
             <!-- Nav Actions -->
@@ -699,7 +699,6 @@
     (function() {
         var modal = document.getElementById('profileModal');
         var openBtn = document.getElementById('openProfileBtn');
-        var openBtnMobile = document.getElementById('openProfileBtnMobile');
         var closeBtn = document.getElementById('closeProfileModal');
         function openModal(e) {
             e.preventDefault();
@@ -707,7 +706,6 @@
             document.body.style.overflow = 'hidden';
         }
         if (openBtn) openBtn.addEventListener('click', openModal);
-        if (openBtnMobile) openBtnMobile.addEventListener('click', openModal);
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
